@@ -1,0 +1,14 @@
+[moleculetype]
+POT            0
+
+[atoms]
+  1   MW          1       POT       MW       1      0.00000  0.1000
+[bonds]
+
+[angles]
+
+[dihedrals]
+
+#ifdef POSRES_POT
+#include "posre_pot.itp"
+#endif

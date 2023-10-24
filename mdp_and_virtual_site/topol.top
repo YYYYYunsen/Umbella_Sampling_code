@@ -1,0 +1,19 @@
+
+;;
+;; The main GROMACS topology file
+;;
+
+; Include forcefield parameters
+#include "forcefield.itp"
+#include "membrane.itp"
+
+#include "LIG.itp"
+#include "K.itp"
+
+[ system ]
+; Name
+Title
+
+[ molecules ]
+; Compound	#mols
+

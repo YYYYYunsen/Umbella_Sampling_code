@@ -1,0 +1,57 @@
+integrator              = md
+define                  = -DPOSRES_POT
+dt                      = 0.002
+nsteps                  = 2500000
+nstlog                  = 5000
+nstxout-compressed       = 5000
+compressed-x-precision  = 1000
+;
+cutoff-scheme           = Verlet
+nstlist                 = 20
+rlist                   = 1.2
+vdwtype                 = Cut-off
+vdw-modifier            = Force-switch
+rvdw_switch             = 1.0
+rvdw                    = 1.2
+coulombtype             = PME
+rcoulomb                = 1.2
+;
+tcoupl                  = v-rescale
+tc_grps                 = MEMB SOLV
+tau_t                   = 1.0 1.0
+ref_t                   = 310.15 310.15
+;
+pcoupl                  = Parrinello-Rahman
+pcoupltype              = semiisotropic
+tau_p                   = 5.0
+compressibility         = 4.5e-5  4.5e-5
+ref_p                   = 1.0     1.0
+refcoord_scaling        = com
+;
+constraints             = h-bonds
+constraint_algorithm    = LINCS
+continuation            = yes
+;
+nstcomm                 = 100
+comm_mode               = linear
+comm_grps               = MEMB SOLV
+
+
+;Pull code
+pull                 = yes
+pull_ngroups         = 2
+pull_ncoords         = 1
+pull_group1_name     = HP9
+pull_group2_name     = POT
+pull_coord1_type     = umbrella   ; 简谐偏离力 harmonic biasing force
+pull_coord1_geometry = direction  ; 简单的距离增加 simple distance increase
+pull_coord1_groups   = 1 2
+pull_coord1_dim      = N N Y
+pull_coord1_rate     = 0.0      ; 0.001 nm per ps = 0.5 nm per ns
+pull_coord1_k        = 1000        ; kJ mol^-1^ nm^-2^
+;pull_start_init      =        ; 定义大于0的初始质心距离 define initial COM distance > 0
+pull-coord1-vec      = 0.0 0.0 1.0
+pull_coord1_start    = yes
+;}==============================================================================
+;冻结
+
