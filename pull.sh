@@ -2,7 +2,7 @@
 #
 
 
-for i in {1..200}
+for i in {1..200} #you shoud edit the number of windows your will calculate
 do 
     gmx grompp -f npt_pull.mdp -c conf$i.gro -n index.ndx -p topol.top -o um0-$i.tpr -maxwarn 99 -r conf$i.gro
 	gmx mdrun -v -deffnm um0-$i -ntmpi 1 -ntomp 12 -update gpu -pin on  -gpu_id 0
