@@ -59,3 +59,7 @@ EOF
 
 #generate the prepared .gro
 gmx solvate -cp SOLU.gro -cs WAT_PART.gro -o step5_ready.gro
+
+#remove redundancy
+
+rm SOLU.gro WAT_PART.gro WAT.gro WAT_PART.ndx SOL.ndx solv.gro mol.gro
