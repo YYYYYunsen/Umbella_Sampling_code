@@ -32,7 +32,7 @@ echo -e "MOL\n$atom_number" > part.gro
 cat part.gro step_temp.gro solute_temp.gro > whole.gro
 
 #add virtual site
-gmx genconf -f POT.pdb -o K.gro
+#gmx genconf -f POT.pdb -o K.gro
 gmx editconf -f K.gro -o K_box.gro -box $box_size_x $box_size_y $box_size_z -center $center_x $center_y $pot_z
 gmx solvate -cp whole.gro -cs K_box.gro -o mol.gro
 gmx solvate -cp mol.gro -cs spc216.gro -o solv.gro
